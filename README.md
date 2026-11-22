@@ -1,5 +1,7 @@
 # OrangeJuice97
 
+**Orange Juice (1997 version).** Orange Juice was a French-language online magazine about the demoscene, built in 1997. It covers demoparty reports and calendar (Volcanic, LTP, The Party, Wired), an explainer on what a demo is (demos, 64k and 4k intros), lists of groups and handles, artwork, links and credits, all in a frames-based layout of the time.
+
 Archive of an old static website, served as-is from bunny.net at the hostname
 of [`site.json`](site.json). Kept online for history, no longer developed.
 
