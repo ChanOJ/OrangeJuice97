@@ -11,6 +11,7 @@ from __future__ import annotations
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 
 import bunny
@@ -38,7 +39,7 @@ def check(base: str) -> list[str]:
     index = next((bunny.SITE_DIR / i for i in INDEX if (bunny.SITE_DIR / i).is_file()), None)
     targets = [("/", index)] + [("/" + p.relative_to(bunny.SITE_DIR).as_posix(), p) for p in pages]
     for path, local in targets:
-        status, body = fetch(base + path)
+        status, body = fetch(base + urllib.parse.quote(path))
         if status != 200:
             errors.append(f"{path}: HTTP {status}")
         elif local is not None and body != local.read_bytes():
