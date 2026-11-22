@@ -8,7 +8,7 @@ of [`site.json`](site.json). Kept online for history, no longer developed.
 | Path | Content |
 | --- | --- |
 | `site/` | The website files, exactly as served (imported from the storage zone) |
-| `site.json` | The only site-specific settings: repository, storage zone, pull zone (names and ids), hostname |
+| `site.json` | The only site-specific settings: repository, storage zone, pull zone, hostname (plus zone ids, only until the first apply adopts them) |
 | `infra/` | OpenTofu: storage zone, pull zone, hostname (state encrypted, committed) |
 | `infra/secrets.env` | Proton Pass **references** to the secrets (vault `OldSites`), no secret values |
 | `scripts/deploy.py` | Sync `site/` to the storage zone, purge the CDN |
@@ -68,3 +68,15 @@ The same files serve every old site of the bunny.net account; only `site.json`,
    ```bash
    scripts/bootstrap.sh github
    ```
+
+4. Once the first apply has adopted the resources, rename the zones after the
+   repository (bunny.net cannot rename: the zones are replaced, new ones first):
+   - at Infomaniak, point the CNAME of the hostname to `<repo, lowercase>.b-cdn.net`
+     (any `*.b-cdn.net` name reaches bunny.net, which routes by hostname, so
+     this is safe before and after the switch);
+   - one pull request that removes the ids from `site.json` and sets
+     `storage_zone` and `pullzone` to the lowercase repository name;
+   - after merge, run *Infra: bunny.net* with action `apply`: it creates the
+     new zones, moves the hostname, deletes the old zones, deploys `site/` to
+     the new storage zone and runs the smoke test (a few minutes of errors at
+     most, while the files are uploaded and the certificate issued).
