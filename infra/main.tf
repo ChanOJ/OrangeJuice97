@@ -17,6 +17,12 @@ resource "bunnynet_storage_zone" "this" {
 
   custom_404_file_path = lookup(local.site, "not_found_page", null)
   rewrite_404_to_200   = false
+
+  # Names cannot change on bunny.net: a new name replaces the zone. The new
+  # one is created first; the apply workflow then deploys site/ to it.
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "bunnynet_pullzone" "this" {
@@ -48,6 +54,12 @@ resource "bunnynet_pullzone" "this" {
   # cipher suites allowed by "Legacy".
   tls_level   = "Compatible"
   tls_support = []
+
+  # A new name replaces the pull zone (system hostname <name>.b-cdn.net):
+  # the new one is created first, then the hostname moves to it.
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "bunnynet_pullzone_hostname" "this" {

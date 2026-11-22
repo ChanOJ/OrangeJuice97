@@ -101,7 +101,7 @@ def main() -> int:
     print("Storage zone up to date.")
 
     if uploads or orphans or args.force_purge:
-        bunny.purge_pullzone(cfg["pullzone_id"])
+        bunny.purge_pullzone(bunny.pullzone(cfg["pullzone"])["Id"])
         print("Pull zone cache purged.")
     else:
         print("No change: no purge.")
