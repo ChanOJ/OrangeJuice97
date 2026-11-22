@@ -1,0 +1,37 @@
+<HTML><HEAD>
+<TITLE>Visualisation de l'image</TITLE>
+</HEAD>
+
+<BODY TEXT="#4080FF" BGCOLOR="#000000" link="#4080FF" alink="#4080FF" vlink="#4080FF">
+
+<SCRIPT language="JavaScript">
+<!--
+function GetCookie()
+{
+if (document.cookie.charAt(document.cookie.length - 2)==";")
+    return document.cookie.substring(0,document.cookie.length - 2);
+else return document.cookie;
+}
+{
+document.write("<CENTER><A HREF=\"javascript:history.back()\">");
+document.write("<IMG src=\""+GetCookie()+"\" BORDER=0>");
+document.writeln("</A></CENTER>");
+var exp = new Date();
+document.cookie=document.cookie+"; expires="+exp.toGMTString();
+if (navigator.appName=="Microsoft Internet Explorer")
+   {
+    document.writeln("<CENTER><br>Vous avez MSIE !<br><br>");
+    document.writeln("A cause d'une des incompatibilités de celui-ci avec JavaScript, cette image ne s'affiche pas !");
+    document.writeln("Si vous avez des infos sur la mise en place de cookies temporaires avec MSIE,");
+    document.writeln("ecrivez moi svp :<br>");
+    document.writeln('<A HREF="mailto:chandra@mail.dotcom.fr">chandra@mail.dotcom.fr</A><br><br>');
+    document.writeln("Merci !<br><br>");
+    document.writeln("<SMALL>Si malgrès ce que j'ai écrit ci-dessus, l'image s'affiche quand meme, cela est du au fait que vous devez avoir une version");
+    document.writeln("de MSIE supérieure à la 3.0 (la 3.02 marche parait-il). Veuillez alors excuser ce texte peu seyant ;-)</SMALL></CENTER>");
+   }
+}
+// -->
+</SCRIPT>
+
+</BODY>
+</HTML>

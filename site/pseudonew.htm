@@ -1,0 +1,341 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>S'ajouter à la liste des pseudos</title>
+</head>
+
+<body bgcolor="#000000" text="#FFFFFF">
+<font size="2" face="Arial"><script language="JavaScript">
+<!--
+// --------------------------------------------------------------------------------------------------------
+{
+// if (navigator.appName=="Microsoft Internet Explorer")
+//    {
+//     alert("Vous avez MSIE !\n\nA cause d'un des bogues de celui-ci, ce formulaire ne\nfonctionnera pas !\n\nS'il vous plait, si vous avez des infos pour contourner ce bogue\n(formulaires JavaScript, Orange Juice n'est pas le seul site\ndans ce cas), ecrivez moi : chandra@mail.dotcom.fr\n\nMerci... Utilisez Netscape pour remplir le formulaire...");
+//     history.back();
+//    }
+var L=40;
+var L2=34;
+if (navigator.appName=="Netscape") L=40;
+  else if (navigator.appName=="Microsoft Internet Explorer") L=56;
+if (navigator.appName=="Netscape") L2=34;
+  else if (navigator.appName=="Microsoft Internet Explorer") L2=60;
+}
+// --------------------------------------------------------------------------------------------------------
+function ZoneTexte(nom,val,maxl)
+{
+return "<input type=\"text\" size=\""+L+"\" maxlength=\""+maxl+"\" name=\""+nom+"\" value=\""+val+"\">";
+}
+// --------------------------------------------------------------------------------------------------------
+function ZoneTexteArea(nom,rows,val)
+{
+return "<textarea name=\"+nom+\" rows=\""+rows+"\" cols=\""+L2+"\">"+val+"</textarea>";
+}
+// --------------------------------------------------------------------------------------------------------
+function pasbon(texte)
+{
+ alert(texte);
+ return false;
+}
+function verif_form()
+{
+var aujourdhui = new Date();
+var cette_annee = aujourdhui.getYear();
+if (cette_annee<70) cette_annee=cette_annee+2000;
+   else if (cette_annee<1000) cette_annee=cette_annee+1900;
+if (document.PseudoNew.pseudo.value=="")
+   return pasbon("Tu dois inscrire ton pseudo.\nSi tu n'en a pas, incris ton vrai nom à la place.");
+if ((document.PseudoNew.nom.value!="")&&(document.PseudoNew.prenom.value==""))
+   return pasbon("Si tu met ton nom, il vaut quand même mieux mettre le prénom aussi ! =)");
+if ((document.PseudoNew.sexe[0].checked==false)&&(document.PseudoNew.sexe[1].checked==false))
+   return pasbon("Oooops, t'a oublié de dire si tu est un mec ou une fille !");
+if ((document.PseudoNew.email.value!="")
+   &&((document.PseudoNew.email.value.length<3)
+    ||(document.PseudoNew.email.value.indexOf("@",0)<0)
+    ||(document.PseudoNew.email.value.indexOf(" ",0)>=0)))
+   return pasbon("Il y a une erreur dans ton e-mail.\nFormat attendu : nn@xx");
+if ((document.PseudoNew.homepage.value!="")
+   &&((document.PseudoNew.homepage.value.substring(0,7).toLowerCase()!="http://")
+    ||(document.PseudoNew.homepage.value.length<10)
+    ||(document.PseudoNew.homepage.value.indexOf(" ",0)>=0)))
+   return pasbon("L'URL de ta Home Page n'est pas valide.\nTu la commence bien par http:// ?");
+if ((document.PseudoNew.ANS.checked==false)&&
+    (document.PseudoNew.ASC.checked==false)&&
+    (document.PseudoNew.COD.checked==false)&&
+    (document.PseudoNew.GFX.checked==false)&&
+    (document.PseudoNew.RAY.checked==false)&&
+    (document.PseudoNew.PPE.checked==false)&&
+    (document.PseudoNew.SWP.checked==false)&&
+    (document.PseudoNew.SYS.checked==false)&&
+    (document.PseudoNew.ZIK.checked==false))
+   return pasbon("Tu doit cocher ta fonction\nSi tu n'en a pas, c'est que tu ne fait pas vraiment partie de la scene !");
+if ((document.PseudoNew.statut[0].checked==false)&&(document.PseudoNew.statut[1].checked==false)&&(document.PseudoNew.statut[2].checked==false))
+   return pasbon("Hop, tu a oublié de donner ton statut !");
+if ((document.PseudoNew.birth_day.value!="")||(document.PseudoNew.birth_month.value!="")||(document.PseudoNew.birth_year.value!=""))
+          {
+          if ((document.PseudoNew.birth_day.value=="")||(document.PseudoNew.birth_day.value<1)||(document.PseudoNew.birth_day.value>31))
+              return pasbon("Le jour de ta date de naissance n'est pas valide");
+          if ((document.PseudoNew.birth_month.value=="")||(document.PseudoNew.birth_month.value<1)||(document.PseudoNew.birth_month.value>12))
+              return pasbon("Le mois de ta date de naissance n'est pas valide");
+          if ((document.PseudoNew.birth_year.value=="")||((document.PseudoNew.birth_year.value<1920)&&(document.PseudoNew.birth_year.value>999))||(document.PseudoNew.birth_year.value>(cette_annee - 6)))
+              return pasbon("L'année de ta date de naissance n'est pas valide.");
+          if ((document.PseudoNew.birth_year.value<1000))
+              return pasbon("Tu doit mettre 4 chiffres pour ton année de naissance !");
+          }
+if ((document.PseudoNew.photo_id.value!="")
+   &&((document.PseudoNew.photo_id.value.length<5)
+   ||(document.PseudoNew.photo_id.value.indexOf(" ",0)>=0)
+   ||((document.PseudoNew.photo_id.value.substring(document.PseudoNew.photo_id.value.length-4,document.PseudoNew.photo_id.value.length).toLowerCase()!=".jpg")
+   &&(document.PseudoNew.photo_id.value.substring(document.PseudoNew.photo_id.value.length-4,document.PseudoNew.photo_id.value.length).toLowerCase()!=".gif"))))
+   return pasbon("Le nom du fichier Photo d'Identité n'est pas valide.\nEst-ce bien un .GIF ou un .JPG ?");
+if ((document.PseudoNew.annee_scene.value=="")||(document.PseudoNew.annee_scene.value<1970)||(document.PseudoNew.annee_scene.value>cette_annee))
+   return pasbon("L'année à partir de laquelle tu as commencé à t'interesser à la scene n'est pas valide.\nTu dois obligatoirement remplir ce champ (4 chiffres) !");
+if ((document.PseudoNew.IRC_canal.value!="")&&(document.PseudoNew.IRC_serveur[0].checked==false)&&(document.PseudoNew.IRC_serveur[0].checked==false))
+   return pasbon("Il faut cocher EFNET ou UNDERNET pour l' IRC !");
+if (document.PseudoNew.delire.value=="Je trouve que Chandra & Tonic sont les mecs les plus intelligents qui existent sur terre !")
+   return pasbon("Tu veux vraiment laisser ce délire (Chandra & Tonic sont les plus intelligent) ?\n\nMoi perso ca ne me dérange pas, mais Tonic il risque de voir ses\nchevilles enfler et puis après il rentrera plus dans la voiture et il ne\npourra plus m'emmener au ciné, alors pas cool !\n\nAlors met un autre délire, non mais ! =)))");
+return confirm("Es-tu certain de tout avoir entré correctement\net de vouloir envoyer ce formulaire ?");
+}
+// --------------------------------------------------------------------------------------------------------
+// -->
+</script></font>
+
+<!-- <form
+action="mailto:sauthier@inforoute.cgs.fr?subject=Orange Juice [Ajout de pseudo]"
+method="POST" name="PseudoNew" onsubmit="return verif_form();"> -->
+<form
+action="mailto:chandra@ojuice.net?subject=Old Orange Juice [Ajout de pseudo]"
+method="POST" name="PseudoNew" onsubmit="return verif_form();">
+<font size="2" face="Arial">
+<!--
+<FORM METHOD="post" name="PseudoNew" ACTION="/cgi-bin/mailer.cgi">
+<INPUT name="SUBJECT" value="Orange Juice (Ajout de Pseudo)" type="hidden" >
+<INPUT type="hidden" name="TO" value="sauthier@inforoute.cgs.fr">
+-->
+</font><table border="0"
+    cellpadding="2" cellspacing="0" width="100%">
+        <tr>
+            <td width="100%" bgcolor="#3737C6"><font size="2"
+            face="Arial">S'ajouter à la liste des pseudos</font></td>
+        </tr>
+    </table>
+    <div align="left"><table border="0" cellpadding="0"
+    width="100%">
+        <tr>
+            <td width="50%" bgcolor="#808080"><font size="2"
+            face="Arial">Pseudo</font></td>
+            <td width="50%" bgcolor="#808080"><font size="2"
+            face="Arial"><script language="JavaScript"><!--
+            document.write(ZoneTexte("pseudo","",20));
+            // -->
+            </script>
+            </font></td>
+        </tr>
+        <tr>
+            <td width="50%" bgcolor="#808080"><font size="2"
+            face="Arial">Prénom : <input type="text" size="20"
+            maxlength="20" name="prenom"></font></td>
+            <td width="50%" bgcolor="#808080"><font size="2"
+            face="Arial">Nom : <input type="text" size="20"
+            maxlength="20" name="nom"> </font></td>
+        </tr>
+        <tr>
+            <td width="50%" bgcolor="#808080"><font size="2"
+            face="Arial">Sexe</font></td>
+            <td width="50%" bgcolor="#808080"><font
+            color="#000000" size="2" face="Arial"><input
+            type="radio" name="sexe" value="homme"> Masculin <input
+            type="radio" name="sexe" value="femme"> Féminin <input
+            type="radio" name="taille_sexe" value="gros"> Gros <input
+            type="radio" name="taille_sexe" value="petit"> Petit</font></td>
+        </tr>
+        <tr>
+            <td width="50%" bgcolor="#808080"><font size="2"
+            face="Arial">Email </font></td>
+            <td width="50%" bgcolor="#808080"><font
+            color="#000000" size="2" face="Arial"><script
+            language="JavaScript"><!--
+            document.write(ZoneTexte("email","",40));
+            // -->
+            </script> </font></td>
+        </tr>
+        <tr>
+            <td width="60%" bgcolor="#808080"><font size="2"
+            face="Arial">Home Page </font><font size="1"
+            face="Arial">(URL complète)</font></td>
+            <td width="40%" bgcolor="#808080"><font size="2"
+            face="Arial"><script language="JavaScript"><!--
+            document.write(ZoneTexte("homepage","",80));
+            // -->
+            </script>
+            </font></td>
+        </tr>
+        <tr>
+            <td width="60%" bgcolor="#808080"><font size="2"
+            face="Arial">Groupe(s)</font></td>
+            <td width="40%" bgcolor="#808080"><font size="2"
+            face="Arial"><script language="JavaScript"><!--
+            document.write(ZoneTexte("groupe","",50));
+            // -->
+            </script>
+            </font></td>
+        </tr>
+        <tr>
+            <td width="60%" bgcolor="#808080"><font size="2"
+            face="Arial">Fonction(s) dans ce(s) groupe(s) </font></td>
+            <td width="40%" bgcolor="#808080"><font
+            color="#000000" size="2" face="Arial"><input
+            type="checkbox" name="ANS"> Ansi <input
+            type="checkbox" name="ASC"> Ascii <input
+            type="checkbox" name="COD"> Coder <input
+            type="checkbox" name="GFX"> Gfx <input
+            type="checkbox" name="RAY"> Gfx3D<br>
+            <input type="checkbox" name="PPE"> PPE <input
+            type="checkbox" name="SWP"> Swapper <input
+            type="checkbox" name="SYS"> Sysop <input
+            type="checkbox" name="ZIK"> Zikos</font></td>
+        </tr>
+        <tr>
+            <td width="60%" bgcolor="#808080"><font size="2"
+            face="Arial">Machine</font></td>
+            <td width="40%" bgcolor="#808080"><font size="2"
+            face="Arial"><select name="machine" size="1">
+                <option selected>PC</option>
+                <option>Amiga</option>
+                <option>Amiga/PC</option>
+                <option>Atari</option>
+                <option>BeBox</option>
+                <option>Mac</option>
+            </select></font></td>
+        </tr>
+        <tr>
+            <td width="60%" bgcolor="#808080"><font size="2"
+            face="Arial">Quel est ton statut ?</font></td>
+            <td width="40%" bgcolor="#808080"><font
+            color="#000000" size="2" face="Arial"><input
+            type="radio" name="statut" value="actif"> Actif <input
+            type="radio" name="statut" value="inactif"> Inactif <input
+            type="radio" name="statut" value="retraite">
+            Retraité </font></td>
+        </tr>
+        <tr>
+            <td width="60%" bgcolor="#808080"><font size="2"
+            face="Arial">Pays</font></td>
+            <td width="40%" bgcolor="#808080"><font size="2"
+            face="Arial"><script language="JavaScript"><!--
+            document.write(ZoneTexte("pays","France",40));
+            // -->
+            </script>
+            </font></td>
+        </tr>
+        <tr>
+            <td width="60%" bgcolor="#808080"><font size="2"
+            face="Arial">Ta date de naissance </font><font
+            size="1" face="Arial">(dd/mm/yyyy)<br>
+            (C'est pour la liste d'anniversaires ! :-)</font></td>
+            <td width="40%" bgcolor="#808080"><font
+            color="#000000" size="2" face="Arial"><input
+            type="text" size="2" maxlength="2" name="birth_day">
+            / <input type="text" size="2" maxlength="2"
+            name="birth_month"> / <input type="text" size="4"
+            maxlength="4" name="birth_year"> </font></td>
+        </tr>
+        <tr>
+            <td width="60%" bgcolor="#808080"><font size="2"
+            face="Arial">Nom de ta photo d'identité<br>
+            </font><font size="1" face="Arial">(Envois-la </font><a
+            href="mailto:sauthier@inforoute.cgs.fr?subject=Orange Juice [Photo ID]"><font
+            size="1" face="Arial">ici</font></a><font size="1"
+            face="Arial"> en file attach (pas de UUE), max.
+            30k, GIF ou JPG, pas de fake svp !)</font></td>
+            <td width="40%" bgcolor="#808080"><font size="2"
+            face="Arial"><input type="text" size="20"
+            maxlength="20" name="photo_id"></font></td>
+        </tr>
+        <tr>
+            <td width="60%" bgcolor="#808080"><font size="2"
+            face="Arial">Depuis quelle année t'intéresses-tu
+            à la scene ?</font></td>
+            <td width="40%" bgcolor="#808080"><font size="2"
+            face="Arial"><input type="text" size="4"
+            maxlength="4" name="annee_scene"> </font></td>
+        </tr>
+        <tr>
+            <td width="60%" bgcolor="#808080"><font size="2"
+            face="Arial">Sur quel channel IRC es-tu présent ?<br>
+            </font><font size="1" face="Arial">(préciser efnet
+            ou undernet et le nick)</font></td>
+            <td width="40%" bgcolor="#808080"><font size="2"
+            face="Arial"><script language="JavaScript"><!--
+            document.write(ZoneTexte("IRC_canal","",40));
+            // -->
+            </script>
+            <br>
+            </font><font color="#000000" size="2" face="Arial"><input
+            type="radio" name="IRC_serveur" value="EFNET"> Efnet <input
+            type="radio" name="IRC_serveur" value="UNDERNET">
+            Undernet</font></td>
+        </tr>
+        <tr>
+            <td width="60%" bgcolor="#808080"><font size="2"
+            face="Arial">A quelle(s) cp es-tu déjà allé ? </font></td>
+            <td width="40%" bgcolor="#808080"><font size="2"
+            face="Arial"><script language="JavaScript"><!--
+            document.write(ZoneTexte("Parties","",255));
+            // -->
+            </script>
+            </font></td>
+        </tr>
+        <tr>
+            <td width="60%" bgcolor="#808080"><font size="2"
+            face="Arial">Laquelle as-tu préféré ?</font></td>
+            <td width="40%" bgcolor="#808080"><font size="2"
+            face="Arial"><script language="JavaScript"><!--
+            document.write(ZoneTexte("PartyPref","",30));
+            // -->
+            </script>
+            </font></td>
+        </tr>
+        <tr>
+            <td width="60%" bgcolor="#808080"><font size="2"
+            face="Arial">La démo qui t'a le plus marqué.</font></td>
+            <td width="40%" bgcolor="#808080"><font size="2"
+            face="Arial"><script language="JavaScript"><!--
+            document.write(ZoneTexte("derniere_demo_aimee","",30));
+            // -->
+            </script>
+            </font></td>
+        </tr>
+        <tr>
+            <td width="60%" bgcolor="#808080"><font size="2"
+            face="Arial">Un mot gentil, un chtit coucou, un
+            délire, une gueulade, des remerciements, une grosse
+            envie, un pléonasme totologique répétitif, un
+            préavis de grève, un fou rire, des félicitations ?
+            Cette case est là pour ca !</font></td>
+            <td width="40%" bgcolor="#808080"><font size="2"
+            face="Arial"><script language="JavaScript"><!--
+            document.write(ZoneTexte("delire","Je trouve que Chandra & Tonic sont les mecs les plus intelligents qui existent sur terre !",255));
+            // -->
+            </script></font></td>
+        </tr>
+    </table>
+    </div><div align="left"><table border="0" cellpadding="0"
+    cellspacing="0" width="100%">
+        <tr>
+            <td width="50%" bgcolor="#3737C6" nowrap><font
+            size="2" face="Arial">Certains champs sont à
+            remplir obligatoirement ! =)</font></td>
+            <td align="right" width="50%" bgcolor="#3737C6"><font
+            size="3" face="Arial"><input type="submit"
+            value="Valider"> <input type="reset" value="Effacer"></font></td>
+        </tr>
+    </table>
+    </div>
+</form>
+</body>
+</html>
