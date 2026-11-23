@@ -7,6 +7,12 @@ of [`site.json`](site.json). Kept online for history, no longer developed.
 
 Full list of the sites: https://chanoj.github.io/
 
+## Search engines
+
+`scripts/seo.py` writes `robots.txt` (allow everything, with the `Sitemap:` line) and `sitemap.xml` (indexable pages only) into `site/`; run `python3 -I scripts/seo.py` after any change of `site/`.
+
+`scripts/frame-restore.js` (one `<script>` tag in every page, added by `seo.py`) rebuilds the frames around a page opened on its own (a search result): it goes to `index.htm#p=<page>`, and each frameset (`index.htm`, `groups.htm`, `listedes.htm`) loads it into the right frame. The page stays a plain file, so crawlers still read it.
+
 ## Layout
 
 | Path | Content |
