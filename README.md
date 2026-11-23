@@ -23,6 +23,10 @@ Full list of the sites: https://chanoj.github.io/
 DNS is not managed here: the hostname is a CNAME to `<pull zone>.b-cdn.net`
 at Infomaniak.
 
+## Removal requests
+
+Pages that list or describe people end with a small footer, "To be removed from this page, contact me." (a `mailto:` link). `scripts/add_removal_note.py` adds it to the pages it lists (idempotent; `--check` reports pages that lack it).
+
 ## Deploying
 
 - **Website**: push a change under `site/` to `main` → workflow *Website: deploy*
