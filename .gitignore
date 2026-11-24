@@ -38,3 +38,6 @@ tmp/
 
 # Claude Code: personal settings. .claude/launch.json is shared.
 .claude/settings.local.json
+
+# Picasa leftovers
+.picasa.ini

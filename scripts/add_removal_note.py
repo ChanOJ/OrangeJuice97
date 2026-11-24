@@ -22,7 +22,7 @@ import re
 
 REMOVAL_MARK = 'id="removal-note"'
 REMOVAL_NOTE = (
-    '<div id="removal-note" style="clear:both;margin:28px auto 8px;padding:6px 8px 0;width:60%;'
+    '<div id="removal-note" style="clear:both;margin:28px auto 8px;padding:6px 8px 0;width:775px;max-width:96%;'
     'border-top:1px solid #808080;text-align:center;font:10px/14px Verdana,Arial,Helvetica,sans-serif;'
     'color:#808080;background:transparent">To be removed from this page, '
     '<a href="mailto:chandra_oj@pm.me" style="color:#808080;text-decoration:underline">contact me</a>.</div>'
