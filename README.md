@@ -1,6 +1,6 @@
 # OrangeJuice97
 
-**Orange Juice (1997 version).** Orange Juice was a French-language online magazine about the demoscene, built in 1997. It covers demoparty reports and calendar (Volcanic, LTP, The Party, Wired), an explainer on what a demo is (demos, 64k and 4k intros), lists of groups and handles, artwork, links and credits, all in a frames-based layout of the time.
+**Orange Juice (1997 version).** Orange Juice was a French-language online magazine about the demoscene, built in 1997. It covers demoparty reports and calendar (Volcanic, LTP, The Party, Wired), an explainer on what a demo is (demos, 64k and 4k intros), lists of groups and handles, artwork, links and credits, all in a frames-based layout of the time (rebuilt as an 800 px centred column of iframes).
 
 Archive of an old static website, served as-is from bunny.net at the hostname
 of [`site.json`](site.json). Kept online for history, no longer developed.
@@ -11,7 +11,7 @@ Full list of the sites: https://chanoj.github.io/
 
 `scripts/seo.py` writes `robots.txt` (allow everything, with the `Sitemap:` line) and `sitemap.xml` (indexable pages only) into `site/`; run `python3 -I scripts/seo.py` after any change of `site/`.
 
-`scripts/frame-restore.js` (one `<script>` tag in every page, added by `seo.py`) rebuilds the frames around a page opened on its own (a search result): it goes to `index.htm#p=<page>`, and each frameset (`index.htm`, `groups.htm`, `listedes.htm`) loads it into the right frame. The page stays a plain file, so crawlers still read it.
+`scripts/frame-restore.js` (one `<script>` tag in every page, added by `seo.py`) rebuilds the frames around a page opened on its own (a search result): it goes to `index.htm#p=<page>`, and each framing page (`index.htm`, `groups.htm`, `listedes.htm`, a centred 800 px column of named `<iframe>`s) loads it into the right one. The page stays a plain file, so crawlers still read it.
 
 ## Layout
 
@@ -31,7 +31,13 @@ at Infomaniak.
 
 ## Removal requests
 
-Pages that list or describe people end with a small footer, "To be removed from this page, contact me." (a `mailto:` link). `scripts/add_removal_note.py` adds it to the pages it lists (idempotent; `--check` reports pages that lack it).
+Pages that list or describe people end with a small footer, "To be removed from this page, contact me." (a `mailto:` link, limited to 775 px). `scripts/add_removal_note.py` adds it to the pages it lists (idempotent; `--check` reports pages that lack it).
+
+## Privacy choices
+
+- No forms: the old "add a handle" form pages are gone (`handles.htm` says the form is closed).
+- E-mail addresses on the people pages (`handles.htm`, `kloon.htm`) are masked: first letter, stars, last letter, full domain (`g******t@iplus.fr`). The `mailto:` links are kept, they just do not work.
+- External links in framed pages open in a new tab (`target="_blank" rel="noopener"`).
 
 ## Deploying
 
