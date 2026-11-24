@@ -95,3 +95,7 @@ The same files serve every old site of the bunny.net account; only `site.json`,
      new zones, moves the hostname, deletes the old zones, deploys `site/` to
      the new storage zone and runs the smoke test (a few minutes of errors at
      most, while the files are uploaded and the certificate issued).
+
+## Bugs
+
+- `newjuice.htm`: the date line above the news table shows "24 novembre 19126" instead of the year. The inline script builds it with `getYear()`, which returns years since 1900 on modern browsers (126 in 2026). Use `getFullYear()`.
